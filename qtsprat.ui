@@ -1,0 +1,694 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>qtsprat</class>
+ <widget class="QMainWindow" name="qtsprat">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1147</width>
+    <height>748</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>SPRAT</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="qtsprat.qrc">
+    <normaloff>:/images/sls_icon.ico</normaloff>:/images/sls_icon.ico</iconset>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QVBoxLayout" name="verticalLayout_2">
+    <item>
+     <widget class="QSplitter" name="splitter">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <widget class="QWebView" name="webView">
+       <property name="renderHints">
+        <set>QPainter::Antialiasing|QPainter::SmoothPixmapTransform|QPainter::TextAntialiasing</set>
+       </property>
+      </widget>
+      <widget class="QWidget" name="layoutWidget">
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QTextEdit" name="messages_textEdit">
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QFormLayout" name="formLayout">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string>CMD &gt;</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="cmd_lineEdit">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+    <item>
+     <widget class="QSpinBox" name="font_size_spinBox">
+      <property name="suffix">
+       <string>px</string>
+      </property>
+      <property name="minimum">
+       <number>6</number>
+      </property>
+      <property name="maximum">
+       <number>24</number>
+      </property>
+      <property name="singleStep">
+       <number>2</number>
+      </property>
+      <property name="value">
+       <number>14</number>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QComboBox" name="browser_comboBox">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <item>
+       <property name="text">
+        <string>Internal Browser</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Firefox</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>IE</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Chrome</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Safari</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Opera</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Brave</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="progress_label">
+      <property name="text">
+       <string>Progress Label</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QProgressBar" name="status_bar_progressBar">
+      <property name="value">
+       <number>0</number>
+      </property>
+      <property name="textVisible">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="status_bar_label">
+      <property name="text">
+       <string>Status Bar Label</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+   <zorder>font_size_spinBox</zorder>
+   <zorder>splitter</zorder>
+   <zorder>browser_comboBox</zorder>
+   <zorder>status_bar_label</zorder>
+   <zorder>status_bar_progressBar</zorder>
+   <zorder>progress_label</zorder>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1147</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionOpen_Project"/>
+    <addaction name="actionLoad_Measurement_File"/>
+    <addaction name="actionSave_Measurement_File"/>
+    <addaction name="actionSave_Measurement_File_As"/>
+    <addaction name="actionPrint_Preview"/>
+    <addaction name="actionPrint"/>
+    <addaction name="actionClose_Project"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>Edit</string>
+    </property>
+    <addaction name="actionEdit_Measurement_File"/>
+    <addaction name="actionEdit_Script_File"/>
+    <addaction name="actionEdit_Command_Chain"/>
+   </widget>
+   <widget class="QMenu" name="menuView">
+    <property name="title">
+     <string>View</string>
+    </property>
+    <addaction name="actionCurrent_Search_Results"/>
+    <addaction name="actionCurrent_Measurement_File"/>
+    <addaction name="actionAll_Measurement_Files"/>
+    <addaction name="actionFlyout_Report"/>
+   </widget>
+   <widget class="QMenu" name="menuOptions">
+    <property name="title">
+     <string>Tools</string>
+    </property>
+    <addaction name="actionShow_SPRAT_Base_Directory"/>
+    <addaction name="actionRun_binscanner"/>
+    <addaction name="separator"/>
+    <addaction name="actionDEM_Packing_Map_Browser"/>
+    <addaction name="separator"/>
+    <addaction name="actionRun_Command_Chain"/>
+    <addaction name="separator"/>
+    <addaction name="actionConfiguration"/>
+    <addaction name="actionNetwork"/>
+    <addaction name="separator"/>
+    <addaction name="actionSAF_Maintenance"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionAbout"/>
+    <addaction name="actionWhat_s_New"/>
+    <addaction name="actionUsers_Guide"/>
+    <addaction name="actionFlyout_Module_Info"/>
+    <addaction name="actionRequirements"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuEdit"/>
+   <addaction name="menuView"/>
+   <addaction name="menuOptions"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonIconOnly</enum>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="separator"/>
+   <addaction name="actionFind"/>
+   <addaction name="separator"/>
+   <addaction name="actionList"/>
+   <addaction name="separator"/>
+   <addaction name="actionAdd_Pseudo"/>
+   <addaction name="separator"/>
+   <addaction name="actionTable"/>
+   <addaction name="actionSpreadsheet"/>
+   <addaction name="actionPlot"/>
+   <addaction name="actionDScope"/>
+   <addaction name="actionStop_scope"/>
+   <addaction name="actionMap"/>
+   <addaction name="separator"/>
+   <addaction name="actionSearch"/>
+   <addaction name="separator"/>
+   <addaction name="actionBack"/>
+   <addaction name="actionForward"/>
+   <addaction name="actionReload"/>
+   <addaction name="actionZoom_In"/>
+   <addaction name="actionZoom_Out"/>
+   <addaction name="separator"/>
+   <addaction name="actionFlyout"/>
+   <addaction name="separator"/>
+   <addaction name="actionSIL"/>
+   <addaction name="separator"/>
+   <addaction name="actionPlayback"/>
+   <addaction name="separator"/>
+   <addaction name="actionRun_Script"/>
+   <addaction name="separator"/>
+   <addaction name="actionARTEMIS"/>
+   <addaction name="separator"/>
+   <addaction name="actionAltadata"/>
+   <addaction name="separator"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionOpen_Project">
+   <property name="text">
+    <string>Open Project...</string>
+   </property>
+  </action>
+  <action name="actionLoad_Measurement_File">
+   <property name="text">
+    <string>Load Measurement File...</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit...</string>
+   </property>
+  </action>
+  <action name="actionEdit_Measurement_File">
+   <property name="text">
+    <string>Edit Measurement File</string>
+   </property>
+  </action>
+  <action name="actionView_Current_Selector_File">
+   <property name="text">
+    <string>View Current Measurement File</string>
+   </property>
+  </action>
+  <action name="actionCurrent_Search_Results">
+   <property name="text">
+    <string>Current Search Results</string>
+   </property>
+  </action>
+  <action name="actionRun_binscanner">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Run binscanner...</string>
+   </property>
+  </action>
+  <action name="actionSelect_Reports">
+   <property name="text">
+    <string>Select Reports...</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About...</string>
+   </property>
+  </action>
+  <action name="actionUsers_Guide">
+   <property name="text">
+    <string>Users Guide</string>
+   </property>
+  </action>
+  <action name="actionSave_Measurement_File">
+   <property name="text">
+    <string>Save Measurement File</string>
+   </property>
+  </action>
+  <action name="actionSave_Measurement_File_As">
+   <property name="text">
+    <string>Save Measurement File As...</string>
+   </property>
+  </action>
+  <action name="actionFind">
+   <property name="text">
+    <string>Find</string>
+   </property>
+   <property name="toolTip">
+    <string>Search metadata for string</string>
+   </property>
+  </action>
+  <action name="actionTable">
+   <property name="icon">
+    <iconset resource="qtsprat.qrc">
+     <normaloff>:/images/Table-icon.png</normaloff>:/images/Table-icon.png</iconset>
+   </property>
+   <property name="text">
+    <string>Table</string>
+   </property>
+   <property name="toolTip">
+    <string>Generate table of results &lt;MET1&gt; &lt;MET2&gt;</string>
+   </property>
+  </action>
+  <action name="actionClose_Project">
+   <property name="text">
+    <string>Close Project...</string>
+   </property>
+  </action>
+  <action name="actionSpreadsheet">
+   <property name="icon">
+    <iconset resource="qtsprat.qrc">
+     <normaloff>:/images/Excel-icon.png</normaloff>:/images/Excel-icon.png</iconset>
+   </property>
+   <property name="text">
+    <string>Spreadsheet</string>
+   </property>
+   <property name="toolTip">
+    <string>Display in Spreadsheet [MET1] [MET2]</string>
+   </property>
+  </action>
+  <action name="actionSubmit">
+   <property name="text">
+    <string>Submit</string>
+   </property>
+   <property name="toolTip">
+    <string>Submit Command to SPRAT</string>
+   </property>
+  </action>
+  <action name="actionPrint">
+   <property name="text">
+    <string>Print...</string>
+   </property>
+  </action>
+  <action name="actionPrint_Preview">
+   <property name="text">
+    <string>Print Preview...</string>
+   </property>
+  </action>
+  <action name="actionFlyout">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="checked">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Flyout</string>
+   </property>
+   <property name="toolTip">
+    <string>Generate Flyout Report</string>
+   </property>
+  </action>
+  <action name="actionVisualization">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Visualization Playback</string>
+   </property>
+  </action>
+  <action name="actionIRS">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>iRS</string>
+   </property>
+   <property name="toolTip">
+    <string>Generate iRS Data</string>
+   </property>
+  </action>
+  <action name="actionAll_Measurement_Files">
+   <property name="text">
+    <string>All Measurement Files</string>
+   </property>
+  </action>
+  <action name="actionBack">
+   <property name="icon">
+    <iconset resource="qtsprat.qrc">
+     <normaloff>:/images/Back-icon.png</normaloff>:/images/Back-icon.png</iconset>
+   </property>
+   <property name="text">
+    <string>Back</string>
+   </property>
+   <property name="toolTip">
+    <string>Back</string>
+   </property>
+  </action>
+  <action name="actionReload">
+   <property name="icon">
+    <iconset resource="qtsprat.qrc">
+     <normaloff>:/images/Refresh-icon.png</normaloff>:/images/Refresh-icon.png</iconset>
+   </property>
+   <property name="text">
+    <string>Reload</string>
+   </property>
+   <property name="toolTip">
+    <string>Reload</string>
+   </property>
+  </action>
+  <action name="actionFlyout_Report">
+   <property name="text">
+    <string>Flyout Report</string>
+   </property>
+  </action>
+  <action name="actionZoom_In">
+   <property name="icon">
+    <iconset resource="qtsprat.qrc">
+     <normaloff>:/images/Zoom-In-icon.png</normaloff>:/images/Zoom-In-icon.png</iconset>
+   </property>
+   <property name="text">
+    <string>Zoom In</string>
+   </property>
+   <property name="toolTip">
+    <string>Zoom In</string>
+   </property>
+  </action>
+  <action name="actionZoom_Out">
+   <property name="icon">
+    <iconset resource="qtsprat.qrc">
+     <normaloff>:/images/Zoom-Out-icon.png</normaloff>:/images/Zoom-Out-icon.png</iconset>
+   </property>
+   <property name="text">
+    <string>Zoom Out</string>
+   </property>
+   <property name="toolTip">
+    <string>Zoom Out</string>
+   </property>
+  </action>
+  <action name="actionShow_SPRAT_Base_Directory">
+   <property name="text">
+    <string>Show SPRAT Base Directory</string>
+   </property>
+  </action>
+  <action name="actionRequirements">
+   <property name="text">
+    <string>Requirements</string>
+   </property>
+  </action>
+  <action name="actionEdit_Script_File">
+   <property name="text">
+    <string>Edit Script File...</string>
+   </property>
+  </action>
+  <action name="actionRun_Script">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="checked">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Run Script</string>
+   </property>
+   <property name="toolTip">
+    <string>Run Script</string>
+   </property>
+  </action>
+  <action name="actionPlot">
+   <property name="icon">
+    <iconset resource="qtsprat.qrc">
+     <normaloff>:/images/plot_icon.png</normaloff>:/images/plot_icon.png</iconset>
+   </property>
+   <property name="text">
+    <string>Plot</string>
+   </property>
+   <property name="toolTip">
+    <string>Plot Data</string>
+   </property>
+  </action>
+  <action name="actionForward">
+   <property name="icon">
+    <iconset resource="qtsprat.qrc">
+     <normaloff>:/images/Forward-icon.png</normaloff>:/images/Forward-icon.png</iconset>
+   </property>
+   <property name="text">
+    <string>Forward</string>
+   </property>
+   <property name="toolTip">
+    <string>Forward</string>
+   </property>
+  </action>
+  <action name="actionCurrent_Measurement_File">
+   <property name="text">
+    <string>Current Measurement File</string>
+   </property>
+  </action>
+  <action name="actionDEM_Packing_Map_Browser">
+   <property name="text">
+    <string>DEM Packing Map Browser</string>
+   </property>
+  </action>
+  <action name="actionRun_Command_Chain">
+   <property name="text">
+    <string>Run Command Chain...</string>
+   </property>
+  </action>
+  <action name="actionEdit_Command_Chain">
+   <property name="text">
+    <string>Edit Command Chain...</string>
+   </property>
+  </action>
+  <action name="actionDScope">
+   <property name="icon">
+    <iconset resource="qtsprat.qrc">
+     <normaloff>:/images/scope.png</normaloff>:/images/scope.png</iconset>
+   </property>
+   <property name="text">
+    <string>DScope</string>
+   </property>
+   <property name="toolTip">
+    <string>DataScope</string>
+   </property>
+  </action>
+  <action name="actionStop_scope">
+   <property name="icon">
+    <iconset resource="qtsprat.qrc">
+     <normaloff>:/images/scope_stop.png</normaloff>:/images/scope_stop.png</iconset>
+   </property>
+   <property name="text">
+    <string>stop scope</string>
+   </property>
+   <property name="toolTip">
+    <string>Stop DataScope</string>
+   </property>
+  </action>
+  <action name="actionPlayback">
+   <property name="text">
+    <string>Playback</string>
+   </property>
+   <property name="toolTip">
+    <string>Run Visualization / Playback</string>
+   </property>
+  </action>
+  <action name="actionConfiguration">
+   <property name="text">
+    <string>Configuration...</string>
+   </property>
+  </action>
+  <action name="actionMap">
+   <property name="icon">
+    <iconset resource="qtsprat.qrc">
+     <normaloff>:/images/map.png</normaloff>:/images/map.png</iconset>
+   </property>
+   <property name="text">
+    <string>Map</string>
+   </property>
+  </action>
+  <action name="actionSAF_Maintenance">
+   <property name="text">
+    <string>SAF Maintenance...</string>
+   </property>
+  </action>
+  <action name="actionARTEMIS">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>ARTEMIS Times</string>
+   </property>
+   <property name="toolTip">
+    <string>Toggle ARTEMIS Timestamps in Tables</string>
+   </property>
+  </action>
+  <action name="actionSIL">
+   <property name="text">
+    <string>SIL</string>
+   </property>
+   <property name="toolTip">
+    <string>Generate SIL Integration Report</string>
+   </property>
+  </action>
+  <action name="actionSearch">
+   <property name="text">
+    <string>Search</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+F</string>
+   </property>
+  </action>
+  <action name="actionAltadata">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Altadata Times</string>
+   </property>
+   <property name="toolTip">
+    <string>Toggle Altadata Timestamps in Tables</string>
+   </property>
+  </action>
+  <action name="actionAdd_Pseudo">
+   <property name="text">
+    <string>Add Pseudo</string>
+   </property>
+   <property name="toolTip">
+    <string>Add &quot;Pseudo CUI&quot;</string>
+   </property>
+  </action>
+  <action name="actionList">
+   <property name="text">
+    <string>List</string>
+   </property>
+  </action>
+  <action name="actionWhat_s_New">
+   <property name="text">
+    <string>What's New</string>
+   </property>
+  </action>
+  <action name="actionNetwork">
+   <property name="text">
+    <string>Network...</string>
+   </property>
+  </action>
+  <action name="actionFlyout_Module_Info">
+   <property name="text">
+    <string>Flyout Module Info</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>QWebView</class>
+   <extends>QWidget</extends>
+   <header>QtWebKitWidgets/QWebView</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="qtsprat.qrc"/>
+ </resources>
+ <connections/>
+</ui>

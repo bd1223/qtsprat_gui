@@ -1,0 +1,22 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/Add-icon.png</file>
+        <file>images/Back-icon.png</file>
+        <file>images/Excel-icon.png</file>
+        <file>images/Refresh-icon.png</file>
+        <file>images/Reports-icon.png</file>
+        <file>images/Search-icon.png</file>
+        <file>images/Table-icon.png</file>
+        <file>images/Zoom-In-icon.png</file>
+        <file>images/Zoom-Out-icon.png</file>
+        <file>images/plot_icon.png</file>
+        <file>images/sls_icon.ico</file>
+        <file>images/Forward-icon.png</file>
+        <file>images/PauseNormal.png</file>
+        <file>images/Play1Normal.png</file>
+        <file>images/StepForwardNormalBlue.png</file>
+        <file>images/scope.png</file>
+        <file>images/scope_stop.png</file>
+        <file>images/map.png</file>
+    </qresource>
+</RCC>
